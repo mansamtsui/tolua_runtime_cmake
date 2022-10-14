@@ -10,3 +10,7 @@
 使用作者WohlSoft https://github.com/WohlSoft/LuaJIT 
 
 感谢作者
+
+修改内容
+
+在tolua_runtime 上替换pb.c为 https://github.com/starwing/lua-protobuf，增加对应修改可以自行比对
