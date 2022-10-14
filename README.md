@@ -13,4 +13,9 @@
 
 修改内容
 
-在tolua_runtime 上替换pb.c为 https://github.com/starwing/lua-protobuf，增加对应修改可以自行比对
+在tolua_runtime 上替换pb.c为 https://github.com/starwing/lua-protobuf
+
+增加对应修改可以自行比对
+
+
+另外对应vs MSVC编译时候，也对应修改了toluaruntime的源码
