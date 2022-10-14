@@ -1,0 +1,51 @@
+cmake_minimum_required(VERSION 3.10)
+ 
+set(CMAKE_BUILD_TYPE Debug)
+ 
+#set(CMAKE_CXX_STANDARD 99)
+
+ 
+project(tolua)
+ 
+set(LUA_SRC_FILES
+    tolua.c
+    int64.c
+    uint64.c
+    pb.c
+    lpeg.c
+    struct.c
+    cjson/strbuf.c
+    cjson/lua_cjson.c
+    cjson/fpconv.c
+    luasocket/auxiliar.c
+    luasocket/buffer.c
+    luasocket/except.c
+    luasocket/inet.c
+    luasocket/io.c
+    luasocket/luasocket.c
+    luasocket/mime.c
+    luasocket/options.c
+    luasocket/select.c
+    luasocket/tcp.c
+    luasocket/timeout.c
+    luasocket/udp.c
+    luasocket/wsocket.c
+)
+ 
+include_directories(
+    luajit-2.1/src
+    luasocket
+)
+
+add_compile_definitions(_WIN32_WCE)
+add_compile_definitions(_WINSOCK_DEPRECATED_NO_WARNINGS)
+add_compile_definitions(LUA_BUILD_AS_DLL)
+add_compile_definitions(LUA_LIB)
+
+link_directories("${CMAKE_SOURCE_DIR}/luajit-2.1/src")
+
+add_library(tolua SHARED
+    ${LUA_SRC_FILES}
+)
+
+target_link_libraries(tolua ws2_32 lua51 luajit)
